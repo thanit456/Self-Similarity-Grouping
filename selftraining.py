@@ -32,7 +32,7 @@ def get_data(name, data_dir, height, width, batch_size,
              workers):
     root = osp.join(data_dir, name)
 
-    dataset = datasets.create(name, root, num_val=0.1)
+    dataset = datasets.create(name, root, num_val=0.1, download=True)
 
     normalizer = T.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225])
@@ -64,7 +64,7 @@ def get_source_data(name, data_dir, height, width, batch_size,
              workers):
     root = osp.join(data_dir, name)
 
-    dataset = datasets.create(name, root, num_val=0.1)
+    dataset = datasets.create(name, root, num_val=0.1, download=True)
 
     normalizer = T.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225])
