@@ -34,8 +34,8 @@ def _pluck(identities, indices, relabel=False):
 
 
 class Market1501(Dataset):
-  url = 'https://drive.google.com/file/d/0B8-rUzbwVRk0c054eEozWG9COHM/view'
-  md5 = '65005ab7d12ec1c44de4eeafe813e68a'
+  url = 'https://drive.google.com/drive/u/0/folders/1Z7ryAl_ULYlpBbDbHKW3jGaq24QS3LKG'
+  # md5 = '65005ab7d12ec1c44de4eeafe813e68a'
 
   def __init__(self, root, split_id=0, num_val=100, download=True):
     super(Market1501, self).__init__(root, split_id=split_id)
@@ -65,12 +65,13 @@ class Market1501(Dataset):
 
     # Download the raw zip file
     fpath = osp.join(raw_dir, 'Market-1501-v15.09.15.zip')
-    if osp.isfile(fpath) and \
-            hashlib.md5(open(fpath, 'rb').read()).hexdigest() == self.md5:
-      print("Using downloaded file: " + fpath)
-    else:
-      raise RuntimeError("Please download the dataset manually from {} "
-                         "to {}".format(self.url, fpath))
+    # ? legacy 
+    # if osp.isfile(fpath) and \
+    #         hashlib.md5(open(fpath, 'rb').read()).hexdigest() == self.md5:
+    #   print("Using downloaded file: " + fpath)
+    # else:
+    #   raise RuntimeError("Please download the dataset manually from {} "
+    #                      "to {}".format(self.url, fpath))
 
     # Extract the file
     exdir = osp.join(raw_dir, 'Market-1501-v15.09.15')

@@ -28,8 +28,8 @@ def _pluck(identities, indices, relabel=False):
     return ret
 
 class DukeMTMC(Dataset):
-    url = 'https://drive.google.com/uc?id=0B0VOCNYh8HeRdnBPa2ZWaVBYSVk'
-    md5 = '2f93496f9b516d1ee5ef51c1d5e7d601'
+    url = 'https://drive.google.com/drive/u/0/folders/1Z7ryAl_ULYlpBbDbHKW3jGaq24QS3LKG'
+    # md5 = '2f93496f9b516d1ee5ef51c1d5e7d601'
 
     def __init__(self, root, split_id=0, num_val=100, download=True):
         super(DukeMTMC, self).__init__(root, split_id=split_id)
@@ -59,12 +59,12 @@ class DukeMTMC(Dataset):
 
         # Download the raw zip file
         fpath = osp.join(raw_dir, 'DukeMTMC-reID.zip')
-        if osp.isfile(fpath) and \
-          hashlib.md5(open(fpath, 'rb').read()).hexdigest() == self.md5:
-            print("Using downloaded file: " + fpath)
-        else:
-            raise RuntimeError("Please download the dataset manually from {} "
-                               "to {}".format(self.url, fpath))
+        # if osp.isfile(fpath) and \
+        #   hashlib.md5(open(fpath, 'rb').read()).hexdigest() == self.md5:
+        #     print("Using downloaded file: " + fpath)
+        # else:
+        #     raise RuntimeError("Please download the dataset manually from {} "
+        #                        "to {}".format(self.url, fpath))
 
         # Extract the file
         exdir = osp.join(raw_dir, 'DukeMTMC-reID')
