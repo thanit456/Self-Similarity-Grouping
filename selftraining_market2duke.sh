@@ -3,7 +3,8 @@ python selftraining.py \
     --tgt-dataset dukemtmc\
     --iteration 30\
     --print-freq 20\
-    --data-dir ./datasets/raw\
+    --resume ./pretrained/market1501_trained.pth.tar\
+    --data-dir ./datasets\
     --logs-dir ./log/market2duke\
     --gpu-devices 0,1\
     --num-split 2
