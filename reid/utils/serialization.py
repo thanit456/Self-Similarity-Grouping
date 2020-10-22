@@ -2,12 +2,13 @@ from __future__ import print_function, absolute_import
 import json
 import os.path as osp
 import shutil
+from functools import partial
+import pickle 
 
 import torch
 from torch.nn import Parameter
 
 from .osutils import mkdir_if_missing
-
 
 def read_json(fpath):
     with open(fpath, 'r') as f:
@@ -30,7 +31,10 @@ def save_checkpoint(state, is_best, fpath='checkpoint.pth.tar'):
 
 def load_checkpoint(fpath):
     if osp.isfile(fpath):
-        checkpoint = torch.load(fpath)['state_dict']
+        pickle.load = partial(pickle.load, encoding='latin1')
+        pickle.Unpickler = partial(pickle.Unpickler, encoding='latin1')
+
+        checkpoint = torch.load(fpath, map_location=lambda storage, loc: storage, pickle_module=pickle)
         for x in list(checkpoint.keys()):
             if 'classifier' in x:
                 checkpoint.pop(x, None)
